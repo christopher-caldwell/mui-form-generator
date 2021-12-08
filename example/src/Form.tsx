@@ -4,10 +4,16 @@ import { Button } from '@mui/material'
 import { UseFormReturn } from 'react-hook-form'
 import { diff } from 'deep-object-diff'
 
+import { FormInputDate } from './components'
+
 export const defaultValues: SomeObject = {
   one: 'Rex',
   two: 'Cody',
-  three: 'Wolffe'
+  three: 'Wolffe',
+  favoriteCommander: 'Cody',
+  favoriteUnit: '501st',
+  isSignedUpForNewsletter: false,
+  startDate: new Date()
 }
 
 const inputs: Config<SomeObject>[] = [
@@ -21,11 +27,11 @@ const inputs: Config<SomeObject>[] = [
     }
   },
   {
-    type: 'text',
+    type: 'checkbox',
     config: {
       control: {
-        name: 'two',
-        label: 'Two'
+        name: 'isSignedUpForNewsletter',
+        label: 'Sign up for our newsletter?'
       }
     }
   },
@@ -41,11 +47,11 @@ const inputs: Config<SomeObject>[] = [
         {
           label: 'Rex',
           value: 'rex'
-        },
+        }
       ],
       control: {
-        name: 'two',
-        label: 'Pick one'
+        name: 'favoriteCommander',
+        label: 'Favorite Commander'
       }
     }
   },
@@ -54,17 +60,26 @@ const inputs: Config<SomeObject>[] = [
     config: {
       options: [
         {
-          label: 'Option One',
-          value: 'one'
+          label: '501st',
+          value: '501st'
         },
         {
-          label: 'Option Two',
-          value: 'two'
+          label: '212th',
+          value: '212th'
         }
       ],
       control: {
-        name: 'two',
-        label: 'Two'
+        name: 'favoriteUnit',
+        label: 'Favorite Unit'
+      }
+    }
+  },
+  {
+    type: 'custom',
+    config: {
+      control: {
+        name: 'startDate',
+        children: props => <FormInputDate {...props} />
       }
     }
   }
@@ -80,7 +95,7 @@ export const Form: FC = () => {
   return (
     <form>
       <MuiForm inputs={inputs} gridSpacing={5} />
-      <Button variant='outlined' onClick={handleSubmit(onSubmit)}>
+      <Button sx={{ marginTop: ({ spacing }) => spacing(3) }} variant='outlined' onClick={handleSubmit(onSubmit)}>
         Submit
       </Button>
     </form>
@@ -91,4 +106,8 @@ export interface SomeObject {
   one: string
   two: string
   three: string
+  favoriteCommander: string
+  favoriteUnit: string
+  isSignedUpForNewsletter: boolean
+  startDate: Date
 }

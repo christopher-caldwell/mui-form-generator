@@ -6,7 +6,7 @@
     "lint": "eslint --ext .ts,.tsx src",
     "format": "prettier --write src",
     "build": "tsc && npx tscpaths -p tsconfig.json -s src -o dist",
-    "build:watch": "nodemon --exec npm run build --delay 3 ./src"
+    "build:watch": "nodemon --exec npm run build --watch src --ext .tsx,.ts"
   },
   "peerDependencies": {
     "@emotion/react": ">=11",

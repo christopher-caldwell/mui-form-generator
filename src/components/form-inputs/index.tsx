@@ -1,6 +1,16 @@
 import { TextFieldProps } from '@mui/material'
 
-import { FormInputProps, FormInputSelect, FormInputText, FormInputRadioProps, FormInputRadio } from '@/components'
+import {
+  FormInputProps,
+  FormInputSelect,
+  FormInputText,
+  FormInputRadioProps,
+  FormInputRadio,
+  FormInputCheckbox,
+  FormInputCheckboxProps,
+  FormInputCustomOverride,
+  FormInputCustomOverrideProps
+} from '@/components'
 
 export const FormInput = function <TData>({ type, config }: Config<TData>) {
   switch (type) {
@@ -15,6 +25,14 @@ export const FormInput = function <TData>({ type, config }: Config<TData>) {
     case 'radio': {
       const { control, ...restProps } = config as unknown as RadioConfig<TData>['config']
       return <FormInputRadio {...control} {...restProps} />
+    }
+    case 'checkbox': {
+      const { control, ...restProps } = config as unknown as CheckboxConfig<TData>['config']
+      return <FormInputCheckbox {...control} {...restProps} />
+    }
+    case 'custom': {
+      const { control } = config as unknown as CustomOverrideConfig<TData>['config']
+      return <FormInputCustomOverride {...control} />
     }
     default:
       throw new Error(`Unsupported input type: ${type} given. Expected one of: 'text', 'select'`)
@@ -48,4 +66,23 @@ type RadioConfig<TData> = {
   } & FormInputRadioProps
 }
 
-export type Config<TData> = TextConfig<TData> | SelectConfig<TData> | RadioConfig<TData>
+type CheckboxConfig<TData> = {
+  type: 'checkbox'
+  config: {
+    control: FormInputProps<TData>
+  } & FormInputCheckboxProps
+}
+
+type CustomOverrideConfig<TData> = {
+  type: 'custom'
+  config: {
+    control: FormInputCustomOverrideProps<TData>
+  }
+}
+
+export type Config<TData> =
+  | TextConfig<TData>
+  | SelectConfig<TData>
+  | RadioConfig<TData>
+  | CheckboxConfig<TData>
+  | CustomOverrideConfig<TData>

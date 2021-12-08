@@ -6,7 +6,7 @@ export const MuiForm = function <TData>({ inputs, gridSpacing = 1 }: Props<TData
   return (
     <Grid container spacing={gridSpacing}>
       {inputs.map(input => (
-        <FormInput {...input} />
+        <FormInput key={input.config.control.name} {...input} />
       ))}
     </Grid>
   )
