@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 import { UseFormReturn, useForm, UnpackNestedValue, DeepPartial } from 'react-hook-form'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const MuiFormContext = createContext<MuiFormProviderContext<any>>({} as MuiFormProviderContext<any>)
 export const MuiFormProvider = function <TData>({ children, defaultValues }: Props<TData>) {
   const useFormResult = useForm<TData>({
