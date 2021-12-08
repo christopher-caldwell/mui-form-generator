@@ -2,7 +2,7 @@
 
 An API for crafting MUI powered forms.
 
-[![NPM](https://img.shields.io/npm/v/@caldwell619/react-ticker.svg)](https://www.npmjs.com/package/@caldwell619/react-ticker) [![NPM](https://img.shields.io/bundlephobia/min/@caldwell619/react-ticker)](https://www.npmjs.com/package/@caldwell619/react-ticker) [![](https://img.shields.io/github/last-commit/christopher-caldwell/react-ticker)]() [![](https://img.shields.io/npm/types/typescript)]()
+[![NPM](https://img.shields.io/npm/v/@caldwell619/mui-form-generator.svg)](https://www.npmjs.com/package/@caldwell619/mui-form-generator) [![NPM](https://img.shields.io/bundlephobia/min/@caldwell619/mui-form-generator)](https://www.npmjs.com/package/@caldwell619/mui-form-generator) [![](https://img.shields.io/github/last-commit/christopher-caldwell/mui-form-generator)]() [![](https://img.shields.io/npm/types/typescript)]()
 
 ## Prerequisite
 
