@@ -28,6 +28,25 @@ const inputs: Config<SomeObject>[] = [
         label: 'Two'
       }
     }
+  },
+  {
+    type: 'select',
+    config: {
+      options: [
+        {
+          label: 'Option One',
+          value: 'one'
+        },
+        {
+          label: 'Option Two',
+          value: 'two'
+        }
+      ],
+      control: {
+        name: 'two',
+        label: 'Two'
+      }
+    }
   }
 ]
 
