@@ -2,6 +2,7 @@ import { FC, useContext } from 'react'
 import { MuiForm, Config, MuiFormContext } from '@caldwell619/mui-form-generator'
 import { Button } from '@mui/material'
 import { UseFormReturn } from 'react-hook-form'
+import { diff } from 'deep-object-diff'
 
 export const defaultValues: SomeObject = {
   one: 'Rex',
@@ -34,7 +35,8 @@ export const Form: FC = () => {
   const { handleSubmit } = useContext<UseFormReturn<SomeObject>>(MuiFormContext)
   const onSubmit = (data: SomeObject) => {
     // Here you can do a diff to get what was updated - or whatever you wish to do.
-    console.log('data', data)
+    const patchDiff = diff(defaultValues, data)
+    console.log('the difference between default and the inputs is:', patchDiff)
   }
   return (
     <form>
