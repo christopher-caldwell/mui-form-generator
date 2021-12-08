@@ -7,3 +7,8 @@ export interface FormInputProps<TData> {
   setValue?: UseFormSetValue<TData>
   gridProps?: GridProps
 }
+
+export interface SelectOption {
+  label: string
+  value: string
+}

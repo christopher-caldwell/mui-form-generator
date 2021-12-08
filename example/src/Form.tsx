@@ -30,6 +30,26 @@ const inputs: Config<SomeObject>[] = [
     }
   },
   {
+    type: 'radio',
+    config: {
+      radioGroupProps: { row: true },
+      options: [
+        {
+          label: 'Cody',
+          value: 'cody'
+        },
+        {
+          label: 'Rex',
+          value: 'rex'
+        },
+      ],
+      control: {
+        name: 'two',
+        label: 'Pick one'
+      }
+    }
+  },
+  {
     type: 'select',
     config: {
       options: [

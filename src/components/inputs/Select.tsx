@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import { TextField, MenuItem, Grid } from '@mui/material'
 
 import { MuiFormContext } from '@/providers'
-import { FormInputProps } from './shared'
+import { FormInputProps, SelectOption } from './shared'
 
 export const FormInputSelect = function <TData>({ name, label, options, gridProps = { xs: 12 } }: Props<TData>) {
   const { control } = useContext(MuiFormContext)
@@ -26,10 +26,6 @@ export const FormInputSelect = function <TData>({ name, label, options, gridProp
   )
 }
 
-export interface SelectOption {
-  label: string
-  value: string
-}
 type Props<TData> = FormInputProps<TData> & {
   options: SelectOption[]
 }

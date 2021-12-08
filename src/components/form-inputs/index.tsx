@@ -1,6 +1,6 @@
 import { TextFieldProps } from '@mui/material'
 
-import { FormInputProps, FormInputSelect, FormInputText } from '@/components'
+import { FormInputProps, FormInputSelect, FormInputText, FormInputRadioProps, FormInputRadio } from '@/components'
 
 export const FormInput = function <TData>({ type, config }: Config<TData>) {
   switch (type) {
@@ -11,6 +11,10 @@ export const FormInput = function <TData>({ type, config }: Config<TData>) {
     case 'text': {
       const { control } = config as unknown as TextConfig<TData>['config']
       return <FormInputText {...control} />
+    }
+    case 'radio': {
+      const { control, ...restProps } = config as unknown as RadioConfig<TData>['config']
+      return <FormInputRadio {...control} {...restProps} />
     }
     default:
       throw new Error(`Unsupported input type: ${type} given. Expected one of: 'text', 'select'`)
@@ -37,4 +41,11 @@ type TextConfig<TData> = {
   }
 }
 
-export type Config<TData> = TextConfig<TData> | SelectConfig<TData>
+type RadioConfig<TData> = {
+  type: 'radio'
+  config: {
+    control: FormInputProps<TData>
+  } & FormInputRadioProps
+}
+
+export type Config<TData> = TextConfig<TData> | SelectConfig<TData> | RadioConfig<TData>

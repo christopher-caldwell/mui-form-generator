@@ -29,8 +29,12 @@ The following will render a single text input with a label of "One".
 
 - The `name` property must match one of your object keys. This is the same behavior as [react-hook-form](https://react-hook-form.com/).
 - Each type of input has their own `config`. The specifics are determined by the `type` property. For example, `select` requires you to pass `options`.
-- `MuiFormContext` is provided so you can access the `handleSubmit` from anywhere.
-  - **Note:** You must add the provider somewhere in your tree. (Not shown in this example, but is shown in [this one](./example/src/App.tsx))
+
+### Proivider
+
+**You must add a provider that wraps your form FOR EACH FORM YOU USE. **
+
+This is not shown in this example, but is shown in [this one](./example/src/App.tsx), with just the single form.
 
 ## Code
 
