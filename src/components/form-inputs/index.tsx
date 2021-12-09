@@ -9,7 +9,9 @@ import {
   FormInputCheckbox,
   FormInputCheckboxProps,
   FormInputCustomOverride,
-  FormInputCustomOverrideProps
+  FormInputCustomOverrideProps,
+  FormInputSwitch,
+  FormInputSwitchProps
 } from '@/components'
 
 export const FormInput = function <TData>({ type, config }: Config<TData>) {
@@ -34,8 +36,14 @@ export const FormInput = function <TData>({ type, config }: Config<TData>) {
       const { control } = config as unknown as CustomOverrideConfig<TData>['config']
       return <FormInputCustomOverride {...control} />
     }
+    case 'switch': {
+      const { control, ...restProps } = config as unknown as SwitchConfig<TData>['config']
+      return <FormInputSwitch {...control} {...restProps} />
+    }
     default:
-      throw new Error(`Unsupported input type: ${type} given. Expected one of: 'text', 'select'`)
+      throw new Error(
+        `Unsupported input type: ${type} given. Expected one of: 'text', 'select', 'radio', 'custom', 'switch', 'checkbox'`
+      )
   }
 }
 
@@ -80,9 +88,17 @@ type CustomOverrideConfig<TData> = {
   }
 }
 
+type SwitchConfig<TData> = {
+  type: 'switch'
+  config: {
+    control: FormInputProps<TData>
+  } & FormInputSwitchProps
+}
+
 export type Config<TData> =
   | TextConfig<TData>
   | SelectConfig<TData>
   | RadioConfig<TData>
   | CheckboxConfig<TData>
   | CustomOverrideConfig<TData>
+  | SwitchConfig<TData>

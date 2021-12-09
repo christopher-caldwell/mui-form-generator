@@ -13,7 +13,8 @@ export const defaultValues: SomeObject = {
   favoriteCommander: 'Cody',
   favoriteUnit: '501st',
   isSignedUpForNewsletter: false,
-  startDate: new Date()
+  startDate: new Date(),
+  doesWantIceCream: false
 }
 
 const inputs: Config<SomeObject>[] = [
@@ -75,6 +76,24 @@ const inputs: Config<SomeObject>[] = [
     }
   },
   {
+    type: 'switch',
+    config: {
+      control: {
+        name: 'doesWantIceCream',
+        label: 'Do you want Ice Cream?'
+      }
+    }
+  },
+  {
+    type: 'checkbox',
+    config: {
+      control: {
+        name: 'doesWantIceCream',
+        label: 'Do you want Ice Cream?'
+      }
+    }
+  },
+  {
     type: 'custom',
     config: {
       control: {
@@ -110,4 +129,5 @@ export interface SomeObject {
   favoriteUnit: string
   isSignedUpForNewsletter: boolean
   startDate: Date
+  doesWantIceCream: boolean
 }
