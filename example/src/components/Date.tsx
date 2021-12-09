@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import AdapterDateFns from '@date-io/date-fns'
 import { TextField } from '@mui/material'
-import { LocalizationProvider, DateTimePicker } from '@mui/lab'
+import { LocalizationProvider, DatePicker } from '@mui/lab'
 import { CustomOverrideRenderArgs } from '@caldwell619/mui-form-generator'
 
-import { SomeObject } from '../Form'
+import { SomeObject } from '../forms/kitchen-sink'
 
 export const FormInputDate: FC<CustomOverrideRenderArgs<SomeObject>> = ({
   field: { value, onChange },
@@ -12,7 +12,7 @@ export const FormInputDate: FC<CustomOverrideRenderArgs<SomeObject>> = ({
 }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DateTimePicker
+      <DatePicker
         label='Pick a date'
         inputFormat='MM/dd/yyyy'
         value={value}

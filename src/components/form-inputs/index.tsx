@@ -1,11 +1,11 @@
-import { TextFieldProps } from '@mui/material'
-
 import {
   FormInputProps,
   FormInputSelect,
+  FormInputSelectProps,
   FormInputText,
-  FormInputRadioProps,
+  FormInputTextProps,
   FormInputRadio,
+  FormInputRadioProps,
   FormInputCheckbox,
   FormInputCheckboxProps,
   FormInputCustomOverride,
@@ -33,8 +33,8 @@ export const FormInput = function <TData>({ type, config }: Config<TData>) {
       return <FormInputCheckbox {...control} {...restProps} />
     }
     case 'custom': {
-      const { control } = config as unknown as CustomOverrideConfig<TData>['config']
-      return <FormInputCustomOverride {...control} />
+      const { control, ...restProps } = config as unknown as CustomOverrideConfig<TData>['config']
+      return <FormInputCustomOverride {...restProps} {...control} />
     }
     case 'switch': {
       const { control, ...restProps } = config as unknown as SwitchConfig<TData>['config']
@@ -46,39 +46,26 @@ export const FormInput = function <TData>({ type, config }: Config<TData>) {
       )
   }
 }
-
-interface SelectOption {
-  label: string
-  value: string
+type InputControl<TData> = {
+  control: FormInputProps<TData>
 }
 type SelectConfig<TData> = {
   type: 'select'
-  config: {
-    options: SelectOption[]
-    inputProps?: TextFieldProps
-    control: FormInputProps<TData>
-  }
+  config: InputControl<TData> & FormInputSelectProps
 }
 type TextConfig<TData> = {
   type: 'text'
-  config: {
-    inputProps?: TextFieldProps
-    control: FormInputProps<TData>
-  }
+  config: InputControl<TData> & FormInputTextProps
 }
 
 type RadioConfig<TData> = {
   type: 'radio'
-  config: {
-    control: FormInputProps<TData>
-  } & FormInputRadioProps
+  config: InputControl<TData> & FormInputRadioProps
 }
 
 type CheckboxConfig<TData> = {
   type: 'checkbox'
-  config: {
-    control: FormInputProps<TData>
-  } & FormInputCheckboxProps
+  config: InputControl<TData> & FormInputCheckboxProps
 }
 
 type CustomOverrideConfig<TData> = {
@@ -90,9 +77,7 @@ type CustomOverrideConfig<TData> = {
 
 type SwitchConfig<TData> = {
   type: 'switch'
-  config: {
-    control: FormInputProps<TData>
-  } & FormInputSwitchProps
+  config: InputControl<TData> & FormInputSwitchProps
 }
 
 export type Config<TData> =

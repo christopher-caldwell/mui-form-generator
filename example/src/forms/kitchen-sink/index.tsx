@@ -4,7 +4,7 @@ import { Button } from '@mui/material'
 import { UseFormReturn } from 'react-hook-form'
 import { diff } from 'deep-object-diff'
 
-import { FormInputDate } from './components'
+import { FormInputDate } from 'components'
 
 export const defaultValues: SomeObject = {
   one: 'Rex',
