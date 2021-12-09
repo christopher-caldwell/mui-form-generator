@@ -1,6 +1,6 @@
 {
   "name": "@caldwell619/mui-form-generator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "scripts": {
     "lint": "eslint --ext .ts,.tsx src",
@@ -8,7 +8,8 @@
     "build": "tsc && npx tscpaths -p tsconfig.json -s src -o dist",
     "build:watch": "nodemon --exec npm run build --watch src --ext .tsx,.ts --delay 2.5",
     "release": "standard-version",
-    "publish-release": "git push --follow-tags origin master && yarn publish"
+    "publish-release": "git push --follow-tags origin master && yarn publish",
+    "publish:release": "sh publish.sh"
   },
   "peerDependencies": {
     "@emotion/react": ">=11",
