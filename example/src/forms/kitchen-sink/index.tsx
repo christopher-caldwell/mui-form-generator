@@ -7,7 +7,7 @@ import { diff } from 'deep-object-diff'
 import { FormInputDate } from 'components'
 
 export const defaultValues: SomeObject = {
-  one: 'Rex',
+  one: '1',
   two: 'Cody',
   three: 'Wolffe',
   favoriteCommander: 'Cody',
@@ -22,7 +22,10 @@ const inputs: Config<SomeObject>[] = [
     type: 'text',
     config: {
       control: {
-        rules: { required: { value: true, message: 'This is required' } },
+        rules: {
+          required: { value: true, message: 'This is required' },
+          pattern: { value: /^[0-9]+/, message: 'Must be a number' }
+        },
         name: 'one',
         label: 'One'
       }
