@@ -6,7 +6,8 @@ import {
   Checkbox,
   Grid,
   FormControlProps,
-  CheckboxProps
+  CheckboxProps,
+  FormHelperText
 } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
@@ -16,17 +17,20 @@ import { FormInputProps } from './shared'
 export const FormInputCheckbox = function <TData>({
   name,
   label,
+  rules,
   formControlProps,
   checkboxProps,
+  helperText,
   gridProps = { xs: 12 }
 }: Props<TData>) {
   const { control } = useContext(MuiFormContext)
 
   return (
     <Grid item {...gridProps}>
-      <Controller
+      <Controller<TData>
         name={name}
         control={control}
+        rules={rules}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <FormControl {...formControlProps} error={!!error}>
             <FormGroup>
@@ -34,13 +38,14 @@ export const FormInputCheckbox = function <TData>({
                 control={
                   <Checkbox
                     {...checkboxProps}
-                    checked={value}
+                    checked={value as boolean}
                     onChange={onChange}
                     inputProps={{ 'aria-label': 'controlled' }}
                   />
                 }
                 label={label}
               />
+              <FormHelperText>{error ? error.message || ' ' : helperText || ' '}</FormHelperText>
             </FormGroup>
           </FormControl>
         )}
@@ -52,5 +57,6 @@ export const FormInputCheckbox = function <TData>({
 export type FormInputCheckboxProps = {
   formControlProps?: FormControlProps
   checkboxProps?: CheckboxProps
+  helperText?: string
 }
 type Props<TData> = FormInputProps<TData> & FormInputCheckboxProps

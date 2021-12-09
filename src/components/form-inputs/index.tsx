@@ -17,12 +17,12 @@ import {
 export const FormInput = function <TData>({ type, config }: Config<TData>) {
   switch (type) {
     case 'select': {
-      const { options, control } = config as unknown as SelectConfig<TData>['config']
-      return <FormInputSelect {...control} options={options} />
+      const { control, ...restProps } = config as unknown as SelectConfig<TData>['config']
+      return <FormInputSelect {...control} {...restProps} />
     }
     case 'text': {
-      const { control } = config as unknown as TextConfig<TData>['config']
-      return <FormInputText {...control} />
+      const { control, ...restProps } = config as unknown as TextConfig<TData>['config']
+      return <FormInputText {...control} {...restProps} />
     }
     case 'radio': {
       const { control, ...restProps } = config as unknown as RadioConfig<TData>['config']

@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import {
   FormControl,
   FormControlLabel,
+  FormHelperText,
   FormLabel,
   Radio,
   RadioGroup,
@@ -17,17 +18,20 @@ import { FormInputProps, SelectOption } from './shared'
 export const FormInputRadio = function <TData>({
   name,
   label,
+  rules,
   options,
   radioGroupProps,
   globalRadioProps,
+  helperText,
   gridProps = { xs: 12 }
 }: Props<TData>) {
   const { control } = useContext(MuiFormContext)
 
   return (
     <Grid item {...gridProps}>
-      <Controller
+      <Controller<TData>
         name={name}
+        rules={rules}
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <FormControl component='fieldset' error={!!error}>
@@ -41,6 +45,7 @@ export const FormInputRadio = function <TData>({
                 />
               ))}
             </RadioGroup>
+            <FormHelperText>{error ? error.message || ' ' : helperText || ' '}</FormHelperText>
           </FormControl>
         )}
       />
@@ -57,5 +62,6 @@ export type FormInputRadioProps = {
   radioGroupProps?: RadioGroupProps
   /** Props that will be given to every Radio component */
   globalRadioProps?: RadioProps
+  helperText?: string
 }
 type Props<TData> = FormInputProps<TData> & FormInputRadioProps

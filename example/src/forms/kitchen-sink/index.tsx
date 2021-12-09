@@ -22,6 +22,7 @@ const inputs: Config<SomeObject>[] = [
     type: 'text',
     config: {
       control: {
+        rules: { required: { value: true, message: 'This is required' } },
         name: 'one',
         label: 'One'
       }
@@ -31,6 +32,7 @@ const inputs: Config<SomeObject>[] = [
     type: 'checkbox',
     config: {
       control: {
+        gridProps: { xs: 12, md: 6 },
         name: 'isSignedUpForNewsletter',
         label: 'Sign up for our newsletter?'
       }
@@ -51,6 +53,7 @@ const inputs: Config<SomeObject>[] = [
         }
       ],
       control: {
+        gridProps: { xs: 12, md: 6 },
         name: 'favoriteCommander',
         label: 'Favorite Commander'
       }
@@ -79,6 +82,7 @@ const inputs: Config<SomeObject>[] = [
     type: 'switch',
     config: {
       control: {
+        gridProps: { xs: 12, md: 6 },
         name: 'doesWantIceCream',
         label: 'Do you want Ice Cream?'
       }
@@ -87,7 +91,9 @@ const inputs: Config<SomeObject>[] = [
   {
     type: 'checkbox',
     config: {
+      helperText: 'Everyone loves ice cream',
       control: {
+        gridProps: { xs: 12, md: 6 },
         name: 'doesWantIceCream',
         label: 'Do you want Ice Cream?'
       }
@@ -113,7 +119,7 @@ export const Form: FC = () => {
   }
   return (
     <form>
-      <MuiForm inputs={inputs} gridSpacing={5} />
+      <MuiForm inputs={inputs} gridSpacing={1} />
       <Button sx={{ marginTop: ({ spacing }) => spacing(3) }} variant='outlined' onClick={handleSubmit(onSubmit)}>
         Submit
       </Button>

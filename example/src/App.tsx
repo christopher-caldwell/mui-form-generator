@@ -10,7 +10,7 @@ function App() {
         <Typography variant='h1' sx={{ fontSize: '2em', marginBottom: ({ spacing }) => spacing(3) }}>
           Kitchen Sink
         </Typography>
-        <MuiFormProvider defaultValues={defaultValues}>
+        <MuiFormProvider props={{ defaultValues }}>
           <KitchenSinkForm />
         </MuiFormProvider>
       </Box>

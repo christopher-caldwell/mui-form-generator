@@ -9,12 +9,13 @@ import { FormInputProps } from './shared'
 export const FormInputCustomOverride = function <TData>({
   name,
   children,
+  rules,
   gridProps = { xs: 12 }
 }: FormInputCustomOverrideProps<TData>) {
   const { control } = useContext(MuiFormContext)
   return (
     <Grid item {...gridProps}>
-      <Controller name={name} control={control} render={children} />
+      <Controller<TData> rules={rules} name={name} control={control} render={children} />
     </Grid>
   )
 }
@@ -27,5 +28,6 @@ export interface CustomOverrideRenderArgs<TData> {
 export interface FormInputCustomOverrideProps<TData> {
   children: (options: CustomOverrideRenderArgs<TData>) => JSX.Element
   name: FormInputProps<TData>['name']
+  rules?: FormInputProps<TData>['rules']
   gridProps?: GridProps
 }

@@ -8,6 +8,7 @@ import { FormInputProps, SelectOption } from './shared'
 export const FormInputSelect = function <TData>({
   name,
   label,
+  rules,
   options,
   inputProps,
   gridProps = { xs: 12 }
@@ -16,6 +17,9 @@ export const FormInputSelect = function <TData>({
   return (
     <Grid item {...gridProps}>
       <Controller<TData>
+        rules={rules}
+        name={name}
+        control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
             {...inputProps}
@@ -25,7 +29,7 @@ export const FormInputSelect = function <TData>({
             value={value}
             label={label}
             error={!!error}
-            helperText={error ? error.message : inputProps?.helperText || ' '}
+            helperText={error ? error.message || ' ' : inputProps?.helperText || ' '}
           >
             {options.map(({ value, label }) => (
               <MenuItem key={value} value={value}>
@@ -34,8 +38,6 @@ export const FormInputSelect = function <TData>({
             ))}
           </TextField>
         )}
-        control={control}
-        name={name}
       />
     </Grid>
   )

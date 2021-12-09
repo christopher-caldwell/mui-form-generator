@@ -5,18 +5,25 @@ import { TextField, TextFieldProps, Grid } from '@mui/material'
 import { MuiFormContext } from '@/providers'
 import { FormInputProps } from './shared'
 
-export const FormInputText = function <TData>({ name, label, textFieldProps, gridProps = { xs: 12 } }: Props<TData>) {
+export const FormInputText = function <TData>({
+  name,
+  rules,
+  label,
+  textFieldProps,
+  gridProps = { xs: 12 }
+}: Props<TData>) {
   const { control } = useContext(MuiFormContext)
   return (
     <Grid item {...gridProps}>
       <Controller<TData>
         name={name}
         control={control}
+        rules={rules}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
             {...textFieldProps}
             // Making the helper text a constant prevents layout shift when messages appear
-            helperText={error ? error.message : textFieldProps?.helperText || ' '}
+            helperText={error ? error.message || ' ' : textFieldProps?.helperText || ' '}
             error={!!error}
             onChange={onChange}
             value={value}
