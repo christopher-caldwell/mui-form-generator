@@ -14,7 +14,8 @@ export const defaultValues: SomeObject = {
   favoriteUnit: '501st',
   isSignedUpForNewsletter: false,
   startDate: new Date(),
-  doesWantIceCream: false
+  doesWantIceCream: false,
+  reallyDoesWantIceCream: true
 }
 
 const inputs: Config<SomeObject>[] = [
@@ -24,7 +25,7 @@ const inputs: Config<SomeObject>[] = [
       control: {
         rules: {
           required: { value: true, message: 'This is required' },
-          pattern: { value: /^[0-9]+/, message: 'Must be a number' }
+          pattern: { value: /^[0-9]*$/, message: 'Must be a number' }
         },
         name: 'one',
         label: 'One'
@@ -86,8 +87,8 @@ const inputs: Config<SomeObject>[] = [
     config: {
       control: {
         gridProps: { xs: 12, md: 6 },
-        name: 'doesWantIceCream',
-        label: 'Do you want Ice Cream?'
+        name: 'reallyDoesWantIceCream',
+        label: 'Do you really want Ice Cream?'
       }
     }
   },
@@ -139,4 +140,5 @@ export interface SomeObject {
   isSignedUpForNewsletter: boolean
   startDate: Date
   doesWantIceCream: boolean
+  reallyDoesWantIceCream: boolean
 }

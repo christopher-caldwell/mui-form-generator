@@ -165,7 +165,7 @@ There is also validation in the example, [here](./example/src/forms/kitchen-sink
 ```ts
 rules: {
   required: { value: true, message: 'This is required' },
-  pattern: { value: /^[0-9]+/, message: 'Must be a number' }
+  pattern: { value: /^[0-9]*$/, message: 'Must be a number' }
 },
 ```
 
