@@ -114,7 +114,7 @@ There is a working example with a select input and a text field that can be foun
 
 You can "easily" pass your own custom input into the render. For an example, see the [Date override](./example/src/components/Date.tsx).
 
-This is an example of using a Date picker, which is not supported natively by this tool, because they are so specific. 
+This is an example of using a Date picker, which is not supported natively by this tool, because they are so specific.
 There are many different kinds, as well as requiring `@mui/lab` as a peer dependency.
 
 ### Component
@@ -155,3 +155,18 @@ export const FormInputDate: FC<CustomOverrideRenderArgs<SomeObject>> = ({
 ## All the inputs together from the example
 
 <img src='./docs/end-result.png' alt='screen shot of all the forms put together' />
+
+## Validation
+
+You may pass rules to each form component that act as validation. You can read more about the validation rules on [react hook form](https://react-hook-form.com/api/useform/register) under the "Register Options".
+
+There is also validation in the example, [here](./example/src/forms/kitchen-sink/index.tsx).
+
+```ts
+rules: {
+  required: { value: true, message: 'This is required' },
+  pattern: { value: /^[0-9]+/, message: 'Must be a number' }
+},
+```
+
+These rules are optional, and will be applied to the unit they are applied to. If none are given, it is assumed the input can be empty upon submission.
