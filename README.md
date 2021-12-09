@@ -4,6 +4,10 @@ An API for crafting MUI powered forms.
 
 [![NPM](https://img.shields.io/npm/v/@caldwell619/mui-form-generator.svg)](https://www.npmjs.com/package/@caldwell619/mui-form-generator) [![NPM](https://img.shields.io/bundlephobia/min/@caldwell619/mui-form-generator)](https://www.npmjs.com/package/@caldwell619/mui-form-generator) [![](https://img.shields.io/github/last-commit/christopher-caldwell/mui-form-generator)]() [![](https://img.shields.io/npm/types/typescript)]()
 
+## Demo
+
+[GH Pages](https://christopher-caldwell.github.io/mui-form-generator/)
+
 ## Prerequisite
 
 You'll need to fully setup MUI, following [this](https://mui.com/getting-started/installation/) guide.
@@ -15,18 +19,6 @@ This is based on MUI v5, using **only** v4 will not work with this.
 ```shell
 yarn add @caldwell619/mui-form-generator
 ```
-
-## Supported Inputs
-
-Currently, there are only 2 supported inputs, but this list will grow with time.
-
-- Single Checkbox
-- Multi Checkbox ( WIP :caution: )
-- Custom Overrides
-- Radio
-- Select
-- Switch
-- Text
 
 ## Quick Exmple
 
@@ -110,9 +102,24 @@ The result is just a single input and your button under it. Clicking submit will
 
 There is a working example with a select input and a text field that can be found [here](./example/src/App.tsx)
 
+## Supported Inputs
+
+Currently, there are only 2 supported inputs, but this list will grow with time.
+
+- Single Checkbox
+- Custom Overrides
+- Radio
+- Select
+- Switch
+- Text
+
+## In Progress
+
+- Multi Checkbox
+
 ## Custom Overrides
 
-You can "easily" pass your own custom input into the render. For an example, see the [Date override](./example/src/components/Date.tsx).
+If an input you want is not supported, you can _"easily"_ pass your own custom input into the render. For an example, see the [Date override](./example/src/components/Date.tsx).
 
 This is an example of using a Date picker, which is not supported natively by this tool, because they are so specific.
 There are many different kinds, as well as requiring `@mui/lab` as a peer dependency.
@@ -160,6 +167,8 @@ export const FormInputDate: FC<CustomOverrideRenderArgs<SomeObject>> = ({
 
 You may pass rules to each form component that act as validation. You can read more about the validation rules on [react hook form](https://react-hook-form.com/api/useform/register) under the "Register Options".
 
+These rules are optional, and will be applied to the unit they are applied to. If none are given, it is assumed the input can be empty upon submission.
+
 There is also validation in the example, [here](./example/src/forms/kitchen-sink/index.tsx).
 
 ```ts
@@ -169,4 +178,14 @@ rules: {
 },
 ```
 
-These rules are optional, and will be applied to the unit they are applied to. If none are given, it is assumed the input can be empty upon submission.
+When the error state is met, the message you provide will be shown as the helper text.
+
+If there is not an error, and you do not provide `helperText`, it will be set to an empty string to prevent layout shift should an error occur. This means inputs might be sapced further apart because they essentially have an empty `helperText` to maintain the layout.
+
+<img src='./docs/error.png' alt='The number error being shown' />
+
+## Bundle Size
+
+The bundle size is a bit deceptive, as the published version is unminified JS. I haven't found the best way to go about this, but it seems as if the best way is to just provide the source, and let you bundle it.
+
+However you React will also tree shake and minify this library. I'm seeing an average of 3-5kb depending on which inputs are used. This will be less if you are already using these inputs elsewhere in the bundle.
