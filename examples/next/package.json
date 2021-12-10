@@ -1,7 +1,7 @@
 {
-  "name": "nextjs-with-typescript",
-  "version": "5.0.0",
-  "private": true,
+  "name": "@caldwell619/mui-form-generator-nextjs-example",
+  "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
