@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@caldwell619/mui-form-generator": {
+      "signature": "cda20fb3e8cf127b812ed66e2ad90aa8",
+      "file": true,
+      "replaced": "link:../.."
+    }
+  }
+}

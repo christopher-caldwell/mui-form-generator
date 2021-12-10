@@ -1,19 +1,19 @@
 {
-  "name": "example",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@caldwell619/mui-form-generator-cra-example",
+  "version": "0.0.0",
+  "license": "MIT",
   "homepage": "http://christopher-caldwell.github.io/mui-form-generator",
   "dependencies": {
-    "@caldwell619/mui-form-generator": "link:..",
+    "@caldwell619/mui-form-generator": "link:../..",
     "@date-io/date-fns": "^2.11.0",
     "@mui/lab": "^5.0.0-alpha.59",
     "date-fns": "^2.27.0",
     "deep-object-diff": "^1.1.0",
-    "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom"
+    "react": "link:../../node_modules/react",
+    "react-dom": "link:../../node_modules/react-dom"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
