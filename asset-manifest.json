@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/mui-form-generator/static/js/main.fbf3a393.chunk.js",
-    "main.js.map": "/mui-form-generator/static/js/main.fbf3a393.chunk.js.map",
+    "main.js": "/mui-form-generator/static/js/main.607be33e.chunk.js",
+    "main.js.map": "/mui-form-generator/static/js/main.607be33e.chunk.js.map",
     "runtime-main.js": "/mui-form-generator/static/js/runtime-main.778c459e.js",
     "runtime-main.js.map": "/mui-form-generator/static/js/runtime-main.778c459e.js.map",
-    "static/js/2.6d6aba6c.chunk.js": "/mui-form-generator/static/js/2.6d6aba6c.chunk.js",
-    "static/js/2.6d6aba6c.chunk.js.map": "/mui-form-generator/static/js/2.6d6aba6c.chunk.js.map",
+    "static/js/2.b35757d3.chunk.js": "/mui-form-generator/static/js/2.b35757d3.chunk.js",
+    "static/js/2.b35757d3.chunk.js.map": "/mui-form-generator/static/js/2.b35757d3.chunk.js.map",
     "index.html": "/mui-form-generator/index.html",
-    "static/js/2.6d6aba6c.chunk.js.LICENSE.txt": "/mui-form-generator/static/js/2.6d6aba6c.chunk.js.LICENSE.txt"
+    "static/js/2.b35757d3.chunk.js.LICENSE.txt": "/mui-form-generator/static/js/2.b35757d3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.778c459e.js",
-    "static/js/2.6d6aba6c.chunk.js",
-    "static/js/main.fbf3a393.chunk.js"
+    "static/js/2.b35757d3.chunk.js",
+    "static/js/main.607be33e.chunk.js"
   ]
 }
