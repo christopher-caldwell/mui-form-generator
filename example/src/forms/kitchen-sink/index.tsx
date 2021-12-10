@@ -15,7 +15,9 @@ export const defaultValues: SomeObject = {
   isSignedUpForNewsletter: false,
   startDate: new Date(),
   doesWantIceCream: false,
-  reallyDoesWantIceCream: true
+  isWifiOn: true,
+  options: [],
+  favoriteSeries: ''
 }
 
 const inputs: Config<SomeObject>[] = [
@@ -87,8 +89,8 @@ const inputs: Config<SomeObject>[] = [
     config: {
       control: {
         gridProps: { xs: 12, md: 6 },
-        name: 'reallyDoesWantIceCream',
-        label: 'Do you really want Ice Cream?'
+        name: 'isWifiOn',
+        label: 'WiFi'
       }
     }
   },
@@ -100,6 +102,70 @@ const inputs: Config<SomeObject>[] = [
         gridProps: { xs: 12, md: 6 },
         name: 'doesWantIceCream',
         label: 'Do you want Ice Cream?'
+      }
+    }
+  },
+  {
+    type: 'multiCheckbox',
+    config: {
+      helperText: 'Select all that apply',
+      globalGridProps: { xs: 4 },
+      options: [
+        {
+          label: "Chocolate"
+        },
+        {
+          label: 'Vanilla'
+        },
+        {
+          label: 'Strawberry'
+        },
+        {
+          label: 'Sherbert'
+        },
+        {
+          label: 'Cookie Dough'
+        },
+        {
+          label: 'Rocky Road'
+        },
+      ],
+      control: {
+        label: 'Options',
+        name: 'options'
+      }
+    }
+  },
+  {
+    type: 'manyOptionsSingleChoice',
+    config: {
+      globalGridProps: { xs: 6 },
+      options: [
+        {
+          label: "Sorccer's Stone"
+        },
+        {
+          label: 'Chamber of Secrets'
+        },
+        {
+          label: 'Prizoner of Azkaban'
+        },
+        {
+          label: 'Goblet of Fire'
+        },
+        {
+          label: 'Order of the Phoenix'
+        },
+        {
+          label: 'Half Blood Prince'
+        },
+        {
+          label: 'Deathly Hallows'
+        }
+      ],
+      control: {
+        name: 'favoriteSeries',
+        label: 'Favorite Series'
       }
     }
   },
@@ -140,5 +206,7 @@ export interface SomeObject {
   isSignedUpForNewsletter: boolean
   startDate: Date
   doesWantIceCream: boolean
-  reallyDoesWantIceCream: boolean
+  isWifiOn: boolean
+  options: string[]
+  favoriteSeries: string
 }

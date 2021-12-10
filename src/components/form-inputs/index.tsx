@@ -11,7 +11,11 @@ import {
   FormInputCustomOverride,
   FormInputCustomOverrideProps,
   FormInputSwitch,
-  FormInputSwitchProps
+  FormInputSwitchProps,
+  FormInputManyOptionSingleChoice,
+  FormInputManyOptionSingleChoiceProps,
+  FormInputMultiCheckbox,
+  FormInputMultiCheckboxProps
 } from '@/components'
 
 export const FormInput = function <TData>({ type, config }: Config<TData>) {
@@ -40,9 +44,17 @@ export const FormInput = function <TData>({ type, config }: Config<TData>) {
       const { control, ...restProps } = config as unknown as SwitchConfig<TData>['config']
       return <FormInputSwitch {...control} {...restProps} />
     }
+    case 'manyOptionsSingleChoice': {
+      const { control, ...restProps } = config as unknown as ManyOptionSingleChoiceConfig<TData>['config']
+      return <FormInputManyOptionSingleChoice {...control} {...restProps} />
+    }
+    case 'multiCheckbox': {
+      const { control, ...restProps } = config as unknown as MultiCheckboxConfig<TData>['config']
+      return <FormInputMultiCheckbox {...control} {...restProps} />
+    }
     default:
       throw new Error(
-        `Unsupported input type: ${type} given. Expected one of: 'text', 'select', 'radio', 'custom', 'switch', 'checkbox'`
+        `Unsupported input type: ${type} given. Expected one of: 'text', 'select', 'radio', 'custom', 'switch', 'checkbox', 'manyOptionsSingleChoice`
       )
   }
 }
@@ -80,6 +92,16 @@ type SwitchConfig<TData> = {
   config: InputControl<TData> & FormInputSwitchProps
 }
 
+type MultiCheckboxConfig<TData> = {
+  type: 'multiCheckbox'
+  config: InputControl<TData> & FormInputMultiCheckboxProps
+}
+
+type ManyOptionSingleChoiceConfig<TData> = {
+  type: 'manyOptionsSingleChoice'
+  config: InputControl<TData> & FormInputManyOptionSingleChoiceProps
+}
+
 export type Config<TData> =
   | TextConfig<TData>
   | SelectConfig<TData>
@@ -87,3 +109,5 @@ export type Config<TData> =
   | CheckboxConfig<TData>
   | CustomOverrideConfig<TData>
   | SwitchConfig<TData>
+  | ManyOptionSingleChoiceConfig<TData>
+  | MultiCheckboxConfig<TData>

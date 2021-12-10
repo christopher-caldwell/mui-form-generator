@@ -112,10 +112,8 @@ Currently, there are only 2 supported inputs, but this list will grow with time.
 - Select
 - Switch
 - Text
-
-## In Progress
-
-- Multi Checkbox
+- Multi Checkbox ( Select all that apply )
+- Checkbox Radio ( Many options, can only choose one )
 
 ## Custom Overrides
 

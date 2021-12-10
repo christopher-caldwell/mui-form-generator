@@ -1,50 +1,32 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import {
+  TypographyProps,
   Checkbox,
+  CheckboxProps,
   FormControl,
   FormControlLabel,
   Grid,
-  Typography,
   GridProps,
-  CheckboxProps,
-  TypographyProps
+  Typography
 } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
-import { FormInputProps } from './shared'
 import { MuiFormContext } from '@/providers'
+import { FormInputProps } from './shared'
 
-export const FormInputMultiCheckbox = function <TData>({
+export const FormInputManyOptionSingleChoice = function <TData>({
   name,
   label,
-  options,
-  gridProps,
-  globalCheckboxProps,
-  globalGridProps,
   rules,
+  options,
+  gridProps = { xs: 12 },
+  globalGridProps = { xs: 12 },
+  globalCheckboxProps,
   helperText,
   subtitleProps = { variant: 'caption', sx: { color: ({ palette }) => palette.text.secondary } },
   titleProps = { variant: 'h6' }
 }: Props<TData>) {
-  // if (!setValue) throw new Error('when using Multi Checkbox, you must provide `setValue`.')
-  const { control, setValue } = useContext(MuiFormContext)
-  const [selectedItems, setSelectedItems] = useState<string[]>([])
-
-  const handleSelect = (value: string) => {
-    const isPresent = selectedItems.indexOf(value)
-    if (isPresent !== -1) {
-      const remaining = selectedItems.filter(item => item !== value)
-      setSelectedItems(remaining)
-    } else {
-      setSelectedItems(prevItems => [...prevItems, value])
-    }
-  }
-
-  useEffect(() => {
-    //@ts-ignore
-    setValue(name, selectedItems)
-  }, [selectedItems, name, setValue])
-
+  const { control } = useContext(MuiFormContext)
   return (
     <Grid {...gridProps} item container sx={{ paddingBottom: ({ spacing }) => spacing(2) }}>
       <Grid item xs={12}>
@@ -55,7 +37,7 @@ export const FormInputMultiCheckbox = function <TData>({
         name={name}
         control={control}
         rules={rules}
-        render={() => (
+        render={({ field: { value: valueFromFormControl, onChange } }) => (
           <>
             {options.map(({ label, value: checkboxValue, gridProps, checkboxProps }) => {
               // The `checkboxLabel` can be omitted, if so use the label as the value
@@ -67,9 +49,9 @@ export const FormInputMultiCheckbox = function <TData>({
                       control={
                         <Checkbox
                           {...(checkboxProps || globalCheckboxProps)}
-                          // TODO: Consider disabled
-                          checked={selectedItems.includes(thisCheckboxValue)}
-                          onChange={() => handleSelect(thisCheckboxValue)}
+                          disabled={!!valueFromFormControl && thisCheckboxValue !== valueFromFormControl}
+                          checked={thisCheckboxValue === valueFromFormControl}
+                          onChange={({ target: { checked } }) => onChange(checked ? checkboxValue || label : undefined)}
                         />
                       }
                       label={label}
@@ -85,7 +67,7 @@ export const FormInputMultiCheckbox = function <TData>({
   )
 }
 
-export type FormInputMultiCheckboxProps = {
+export type FormInputManyOptionSingleChoiceProps = {
   options: {
     label: string
     /** If provided, this will be the value set to the `name` key. If left out, the `label` will be used. */
@@ -101,4 +83,4 @@ export type FormInputMultiCheckboxProps = {
   titleProps?: TypographyProps
   subtitleProps?: TypographyProps
 }
-type Props<TData> = FormInputProps<TData> & FormInputMultiCheckboxProps
+type Props<TData> = FormInputProps<TData> & FormInputManyOptionSingleChoiceProps
