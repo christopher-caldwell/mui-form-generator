@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/christopher-caldwell/mui-form-generator/compare/v0.0.3...v0.0.4) (2022-01-11)
+
+
+### Features
+
+* Adding a Vite example ([88cbcdd](https://github.com/christopher-caldwell/mui-form-generator/commit/88cbcdd8a22671b41838d40296a7510fc92a33be))
+* Adding multi checkbox ([118367b](https://github.com/christopher-caldwell/mui-form-generator/commit/118367bb4325df5314fdd39acd957a5bfb9377d7))
+* Adding nextjs example ([ae1ffe4](https://github.com/christopher-caldwell/mui-form-generator/commit/ae1ffe4e39c03267c7befb5be6770320e825ed1c))
+
+
+### Bug Fixes
+
+* Cleaning up titles ([52b7670](https://github.com/christopher-caldwell/mui-form-generator/commit/52b767042ea742edc99887971c64794bf6a57d59))
+* Removing boilerplate readme ([a954e95](https://github.com/christopher-caldwell/mui-form-generator/commit/a954e95e39620e23a2884bd1f2757d0740d7f49c))
+* Running blur ([f7da0ec](https://github.com/christopher-caldwell/mui-form-generator/commit/f7da0ecc2d59f90863fb7544e15e370741342a66))
+
 ### 0.0.3 (2021-12-09)
 
 
