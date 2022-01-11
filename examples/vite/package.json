@@ -5,13 +5,13 @@
   "scripts": {
     "format": "prettier --write src",
     "lint": "eslint --ext .ts,.tsx src",
-    "dev": "vite",
+    "dev": "vite --port 3002",
     "build": "tsc --noEmit && vite build",
     "analyze": "ANALYZE=true yarn build",
     "serve": "vite preview"
   },
   "dependencies": {
-    "@caldwell619/mui-form-generator": "file:.yalc/@caldwell619/mui-form-generator",
+    "@caldwell619/mui-form-generator": "link:../../",
     "@caldwell619/react-hooks": "^0.0.6",
     "@date-io/date-fns": "^2.11.0",
     "@emotion/react": "11.4.1",

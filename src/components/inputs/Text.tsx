@@ -19,7 +19,7 @@ export const FormInputText = function <TData>({
         name={name}
         control={control}
         rules={rules}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
+        render={({ field: { onChange, value = '', onBlur }, fieldState: { error } }) => (
           <TextField
             {...textFieldProps}
             // Making the helper text a constant prevents layout shift when messages appear
@@ -29,6 +29,10 @@ export const FormInputText = function <TData>({
             value={value}
             fullWidth
             label={label}
+            onBlur={e => {
+              textFieldProps?.onBlur?.(e)
+              onBlur()
+            }}
           />
         )}
       />

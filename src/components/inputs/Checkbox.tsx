@@ -31,7 +31,7 @@ export const FormInputCheckbox = function <TData>({
         name={name}
         control={control}
         rules={rules}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
+        render={({ field: { onChange, value = false }, fieldState: { error } }) => (
           <FormControl {...formControlProps} error={!!error}>
             <FormGroup>
               <FormControlLabel

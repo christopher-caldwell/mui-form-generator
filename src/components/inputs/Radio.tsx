@@ -33,7 +33,7 @@ export const FormInputRadio = function <TData>({
         name={name}
         rules={rules}
         control={control}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
+        render={({ field: { onChange, value = '' }, fieldState: { error } }) => (
           <FormControl component='fieldset' error={!!error}>
             <FormLabel component='legend'>{label}</FormLabel>
             <RadioGroup {...radioGroupProps} value={value} onChange={onChange}>

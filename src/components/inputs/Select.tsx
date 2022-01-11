@@ -14,13 +14,26 @@ export const FormInputSelect = function <TData>({
   gridProps = { xs: 12 }
 }: Props<TData>) {
   const { control } = useContext(MuiFormContext)
+
+  const OptionsDisplay = inputProps?.SelectProps?.native
+    ? options.map(({ value, label }) => (
+        <option key={value} value={value}>
+          {label}
+        </option>
+      ))
+    : options.map(({ value, label }) => (
+        <MenuItem key={value} value={value}>
+          {label}
+        </MenuItem>
+      ))
+
   return (
     <Grid item {...gridProps}>
       <Controller<TData>
         rules={rules}
         name={name}
         control={control}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
+        render={({ field: { onChange, value = '', onBlur }, fieldState: { error } }) => (
           <TextField
             {...inputProps}
             select
@@ -30,12 +43,12 @@ export const FormInputSelect = function <TData>({
             label={label}
             error={!!error}
             helperText={error ? error.message || ' ' : inputProps?.helperText || ' '}
+            onBlur={e => {
+              inputProps?.onBlur?.(e)
+              onBlur()
+            }}
           >
-            {options.map(({ value, label }) => (
-              <MenuItem key={value} value={value}>
-                {label}
-              </MenuItem>
-            ))}
+            {OptionsDisplay}
           </TextField>
         )}
       />
