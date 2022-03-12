@@ -47,8 +47,5 @@
   "main": "dist/index.js",
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "gh-pages": "^3.2.3"
-  }
+  ]
 }
