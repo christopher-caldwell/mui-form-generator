@@ -4,7 +4,7 @@ import { TextField } from '@mui/material'
 import { LocalizationProvider, DatePicker } from '@mui/lab'
 import { CustomOverrideRenderArgs } from '@caldwell619/mui-form-generator'
 
-import { SomeObject } from '../features/kitchen-sink'
+import { SomeObject } from '@/store'
 
 export const FormInputDate: FC<CustomOverrideRenderArgs<SomeObject>> = ({
   field: { value, onChange },

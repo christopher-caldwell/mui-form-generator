@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react'
 import Checker from 'vite-plugin-checker'
+import prismjs from 'vite-plugin-prismjs'
 import { resolve } from 'path'
 import { UserConfig } from 'vite'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -11,9 +12,9 @@ function pathResolve(dir: string) {
 const shouldAnalyze = process.env.ANALYZE
 
 const config: UserConfig = {
-  define: {
-    global: {}
-  },
+  // define: {
+  //   global: ''
+  // },
   resolve: {
     alias: [
       {
@@ -33,6 +34,9 @@ const config: UserConfig = {
     sourcemap: !!shouldAnalyze
   },
   plugins: [
+    prismjs({
+      languages: ['javascript']
+    }),
     react({
       babel: {
         plugins: [

@@ -2,7 +2,7 @@ import { FC, useContext } from 'react'
 import { MuiForm, MuiFormContext } from '@caldwell619/mui-form-generator'
 import { Button, Alert } from '@mui/material'
 import { UseFormReturn } from 'react-hook-form'
-import { diff } from 'deep-object-diff'
+import diff from 'microdiff'
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 import { useResetRecoilState } from 'recoil'
 

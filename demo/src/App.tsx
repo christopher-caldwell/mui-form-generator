@@ -17,7 +17,6 @@ const App: FC = () => {
             display: 'flex',
             justifyContent: 'space-between',
             padding: '1.5%',
-            paddingTop: '70px',
             position: 'relative'
           }}
         >
