@@ -2,6 +2,7 @@
   "name": "@caldwell619/mui-form-generator",
   "version": "0.0.4",
   "license": "MIT",
+  "homepage": "https://christopher-caldwell.github.io/mui-form-generator",
   "scripts": {
     "lint": "eslint --ext .ts,.tsx src",
     "format": "prettier --write src",
@@ -9,7 +10,9 @@
     "build:watch": "nodemon --exec npm run build --watch src --ext .tsx,.ts --delay 2.5",
     "release": "standard-version",
     "publish-release": "git push --follow-tags origin master && yarn publish",
-    "publish:release": "sh publish.sh"
+    "publish:release": "sh publish.sh",
+    "predeploy": "cd demo && yarn install && yarn run build",
+    "deploy": "gh-pages -d demo/dist"
   },
   "peerDependencies": {
     "@emotion/react": ">=11",
@@ -33,6 +36,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "gh-pages": "^3.2.3",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "rc": "^1.2.8",

@@ -2,16 +2,13 @@
   "name": "@caldwell619/mui-form-generator-demo",
   "version": "0.0.0",
   "license": "MIT",
-  "homepage": "https://christopher-caldwell.github.io/mui-form-generator",
   "scripts": {
     "type-check": "tsc --noEmit",
     "format": "prettier --write src",
     "lint": "eslint --ext .ts,.tsx src",
     "dev": "vite --port 3002",
     "build": "tsc --noEmit && vite build",
-    "analyze": "ANALYZE=true yarn build",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist"
+    "analyze": "ANALYZE=true yarn build"
   },
   "dependencies": {
     "@caldwell619/mui-form-generator": "link:../",
