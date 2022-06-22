@@ -10,7 +10,7 @@ export const MuiFormProvider = function <TData>({ children, props }: Props<TData
 }
 
 type Props<TData> = {
-  props: UseFormProps<TData>
+  props?: UseFormProps<TData>
   children: JSX.Element
 }
 
