@@ -187,3 +187,43 @@ If there is not an error, and you do not provide `helperText`, it will be set to
 The bundle size is a bit deceptive, as the published version is unminified JS. I haven't found the best way to go about this, but it seems as if the best way is to just provide the source, and let you bundle it.
 
 However you React will also tree shake and minify this library. I'm seeing an average of 3-5kb depending on which inputs are used. This will be less if you are already using these inputs elsewhere in the bundle.
+
+## HoC to hook into the Form Provider
+
+Sometime wrapping the consumer is tedious, you don't really need it at the next level, but it has to go somewhere.
+
+```tsx
+import { UseFormReturn } from 'react-hook-form'
+import { MuiFormContext, MuiForm } from '@caldwell619/mui-form-generator'
+
+const Form = () => {
+  const { handleSubmit } = useContext<UseFormReturn<SomeObject>>(MuiFormContext)
+  return (
+    <MuiForm inputs={inputs} gridSpacing={1} />
+  )
+}
+
+const WrappedForm: FC = () => {
+  return (
+    <MuiFormProvider>
+      <Form>
+    </MuiFormProvider>
+  )
+}
+```
+
+In the above, `WrappedForm` is uneccesary.
+
+### Usage
+
+Using `withMuiForm`, you can access the form config from the same component. It's similar to using `MuiFormContext.Consumer`, but a bit more conveinient.
+
+```tsx
+import { UseFormReturn } from 'react-hook-form'
+import { withMuiForm, MuiFormContext, MuiForm } from '@caldwell619/mui-form-generator'
+
+export const Home = withMuiForm({ defaultValues }, () => {
+  const { handleSubmit } = useContext<UseFormReturn<SomeObject>>(MuiFormContext)
+  return <MuiForm inputs={inputs} gridSpacing={1} />
+})
+```
