@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import {
   Checkbox,
   FormControl,
@@ -9,7 +9,7 @@ import {
   CheckboxProps,
   TypographyProps
 } from '@mui/material'
-import { Controller } from 'react-hook-form'
+import { Controller, useWatch } from 'react-hook-form'
 
 import { FormInputProps } from './shared'
 import { MuiFormContext } from '@/providers'
@@ -26,24 +26,24 @@ export const FormInputMultiCheckbox = function <TData>({
   subtitleProps = { variant: 'caption', sx: { color: ({ palette }) => palette.text.secondary } },
   titleProps = { variant: 'h6' }
 }: Props<TData>) {
-  // if (!setValue) throw new Error('when using Multi Checkbox, you must provide `setValue`.')
-  const { control, setValue } = useContext(MuiFormContext)
-  const [selectedItems, setSelectedItems] = useState<string[]>([])
+  const { control, setValue, getValues } = useContext(MuiFormContext)
 
+  const selectedItems = getValues(name) as string[]
+  useWatch({ control })
   const handleSelect = (value: string) => {
     const isPresent = selectedItems.indexOf(value)
     if (isPresent !== -1) {
+      // Removing a check
       const remaining = selectedItems.filter(item => item !== value)
-      setSelectedItems(remaining)
+      //@ts-ignore
+      setValue(name, remaining)
     } else {
-      setSelectedItems(prevItems => [...prevItems, value])
+      // Adding a check
+      const newValues = [...selectedItems, value]
+      //@ts-ignore
+      setValue(name, newValues)
     }
   }
-
-  useEffect(() => {
-    //@ts-ignore
-    setValue(name, selectedItems)
-  }, [selectedItems, name, setValue])
 
   return (
     <Grid {...gridProps} item container sx={{ paddingBottom: ({ spacing }) => spacing(2) }}>
@@ -58,7 +58,7 @@ export const FormInputMultiCheckbox = function <TData>({
         render={() => (
           <>
             {options.map(({ label, value: checkboxValue, gridProps, checkboxProps }) => {
-              // The `checkboxLabel` can be omitted, if so use the label as the value
+              // The `checkboxValue` can be omitted, if so use the label as the value
               const thisCheckboxValue = checkboxValue || label
               return (
                 <Grid {...(gridProps || globalGridProps)} container item key={label + checkboxValue}>

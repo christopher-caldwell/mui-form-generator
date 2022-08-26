@@ -16,7 +16,7 @@ export const defaultValues: SomeObject = {
   startDate: new Date(),
   doesWantIceCream: false,
   isWifiOn: true,
-  options: [],
+  options: ['Rocky Road', 'Strawberry'],
   favoriteSeries: ''
 }
 
@@ -112,7 +112,7 @@ const inputs: Config<SomeObject>[] = [
       globalGridProps: { xs: 4 },
       options: [
         {
-          label: "Chocolate"
+          label: 'Chocolate'
         },
         {
           label: 'Vanilla'
@@ -128,7 +128,7 @@ const inputs: Config<SomeObject>[] = [
         },
         {
           label: 'Rocky Road'
-        },
+        }
       ],
       control: {
         label: 'Options',
