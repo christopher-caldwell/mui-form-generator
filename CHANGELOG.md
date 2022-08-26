@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/christopher-caldwell/mui-form-generator/compare/v0.0.4...v0.0.5) (2022-08-26)
+
+
+### Features
+
+* Adding a demo ([#1](https://github.com/christopher-caldwell/mui-form-generator/issues/1)) ([8ff2870](https://github.com/christopher-caldwell/mui-form-generator/commit/8ff2870faa0c276be1c9e1381f820cf27c6c746b))
+* Adding withMuiForm ([#8](https://github.com/christopher-caldwell/mui-form-generator/issues/8)) ([5b83016](https://github.com/christopher-caldwell/mui-form-generator/commit/5b83016999b8f9b49d20c2c917d4738ca81504cd))
+
+
+### Bug Fixes
+
+* Hoping pathing is correct ([#2](https://github.com/christopher-caldwell/mui-form-generator/issues/2)) ([5c6fa7c](https://github.com/christopher-caldwell/mui-form-generator/commit/5c6fa7cc20f8067e7c6762cee5d328b8f647a61a))
+* Making props optional ([9e4b3ee](https://github.com/christopher-caldwell/mui-form-generator/commit/9e4b3ee1c5770b5de36792a9a11e6bad86a57822))
+* Watching the defaults for the checkbox ([#7](https://github.com/christopher-caldwell/mui-form-generator/issues/7)) ([7251154](https://github.com/christopher-caldwell/mui-form-generator/commit/725115470318fcffff51c9912b6d42130150dfdd))
+
 ### [0.0.4](https://github.com/christopher-caldwell/mui-form-generator/compare/v0.0.3...v0.0.4) (2022-01-11)
 
 
